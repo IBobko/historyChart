@@ -1,0 +1,6 @@
+flask
+pytest
+pytest-flask
+matplotlib
+Flask-Injector
+

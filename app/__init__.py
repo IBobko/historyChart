@@ -1,15 +1,9 @@
 # app/__init__.py
 from flask import Flask
+
 from app.config import Config
+from app.container import Container
 from app.views.main import main
-from flask_injector import FlaskInjector
-from injector import Binder, singleton
-from app.services.timeline_service import TimelineService
-from injector import Injector
-
-def configure(binder: Binder):
-    binder.bind(TimelineService, to=TimelineService, scope=singleton)
-
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -21,10 +15,8 @@ def create_app(config_class=Config):
 
     # Registering blueprints
     app.register_blueprint(main)
-
-    injector = Injector([configure])
-
-    # Initialize Flask-Injector with the configure function
-    FlaskInjector(app=app, injector=injector)
+    cont = Container()
+    cont.config.from_dict(app.config)
+    cont.wire(modules=["app.views.main"])  # Указываем модуль, где используется внедрение зависимостей
 
     return app

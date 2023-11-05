@@ -4,21 +4,30 @@ from flask import Blueprint
 from flask import request
 from flask import send_file
 from app.services.timeline_service import TimelineService
+from injector import inject
+from flask import url_for
 from flask import render_template
+from flask import current_app
+from dependency_injector.wiring import inject, Provide
+from app.container import Container
+
 
 main = Blueprint('main', __name__)
 
 
 
 
+@inject
 @main.route('/')
-def index():
+def index(my_service: TimelineService = Provide[Container.my_service]):
+
     return render_template('base.html')
 
 
 
 @main.route('/greet', methods=['GET', 'POST'])
 def greet():
+    print(url_for('static', filename='css/dist/styles.css'))
     if request.method == 'POST':
         name = request.form.get('name')
         return f'Hello, {name}!'
@@ -31,6 +40,7 @@ def greet():
     ''')
 
 @main.route('/timeline')
-def timeline_png(timeline_service: TimelineService):
+@inject
+def timeline_png(timeline_service: TimelineService = Provide[Container.my_service]):
     buf = timeline_service.generate_timeline()
     return send_file(buf, mimetype='image/png')

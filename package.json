@@ -1,0 +1,24 @@
+{
+  "name": "historychart",
+  "version": "1.0.0",
+  "description": "Describe your project here. Provide an overview of what the project does and its purpose.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss app/static/css/src/styles.css -o app/static/css/dist/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}

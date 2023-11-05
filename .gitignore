@@ -2,6 +2,10 @@
 .idea/
 *.iml
 
+
+# NPM specific (node_modules directory contains the installed NPM packages)
+node_modules/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

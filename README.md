@@ -41,5 +41,16 @@ flask run
 ### Running the tests
 
 ```
-python -m unittest discover
+pytеst
+```
+
+```
+npm init -y
+npm install tailwindcss postcss autoprefixer postcss-cli
+npx tailwindcss init
+```
+
+```shell
+npx tailwindcss -i ./app/static/css/src/styles.css -o ./app/static/css/dist/styles.css --watch
+
 ```

@@ -54,3 +54,9 @@ npx tailwindcss init
 npx tailwindcss -i ./app/static/css/src/styles.css -o ./app/static/css/dist/styles.css --watch
 
 ```
+
+## MongoDB
+
+```bash
+docker run --name mongodb -d -p 27017:27017 mongo:latest
+```
